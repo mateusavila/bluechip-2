@@ -1,0 +1,90 @@
+---
+
+export interface Props {
+	url: URL
+}
+const { url: { pathname } } = Astro.props
+---
+
+<header>
+  <div class="container">
+    <h1><a href="/">BlueChip</a></h1>
+    <nav class="main-navigation">
+      <a href="/" class={pathname === '/' ? 'active' : ''} aria-label="Go to Home">Home</a>
+      <a href="/join-the-team" class={pathname === '/join-the-team' ? 'active' : ''} aria-label="Go to Join the Team">Join the team</a>
+      <a href="/contact-us" class={pathname === '/contact-us' ? 'active' : ''} aria-label="Go to Contact Us">Contact us</a>
+    </nav>
+  </div>
+</header>
+
+<style lang="sass">
+  header
+    width: 100%
+    margin: 0
+    height: 80px
+    .container
+      width: calc(100% - 40px)
+      max-width: 1368px
+      margin: 0 auto
+      height: 100% 
+      align-items: center
+      display: flex
+      justify-content: space-between
+      flex-wrap: wrap
+      h1 a
+        text-decoration: none
+        color: var(--primary-dark)
+  .main-navigation
+    display: flex
+    grid-gap: 30px
+    justify-content: space-between
+    a
+      color: var(--primary-dark)
+      text-decoration: none
+      font-size: 14px
+      display: flex
+      align-items: center
+      &:before
+        content: ''
+        background-image: url('/public/img/hyperlink.svg')
+        height: 16px
+        width: 16px
+        display: inline-block
+        margin-right: 5px
+        visibility: hidden
+        opacity: 0
+        transition: all .2s ease-in-out
+      &.active 
+        text-transform: uppercase
+      &.active, &:hover
+        &:before
+          opacity: 1
+          visibility: visible
+          transition: all .2s ease-in-out
+  h1
+    font-family: var(--humane)
+    font-size: 62px
+    margin: 0
+    text-transform: uppercase
+    color: var(--primary-pure)
+  @media all and (max-width: 800px)
+    .main-navigation
+      grid-gap: 12px
+      a
+        font-size: 13px
+  @media all and (max-width: 450px)
+    h1
+      font-size: 38px
+      text-align: center
+      display: block
+      margin: 0 auto
+    .main-navigation
+      grid-gap: 10px
+      width: 100%
+      justify-content: center
+      a
+        font-size: 12px
+    header
+      .container
+        align-content: center
+</style>

@@ -1,0 +1,114 @@
+---
+import { FacebookOrange, InstagramOrange, LinkedinOrange, LogoBluechip } from './images'
+export interface Props {
+	url: URL
+}
+const { url: { pathname } } = Astro.props
+---
+<footer>
+	<div class="container">
+		<img src={LogoBluechip} alt="BlueChip Logo" loading="lazy" width="143" height="20" class="footer-logo">
+		<nav class="footer-navigation">
+			<a href="#who-we-are">Who we are</a>
+			<a href="#brands">Brands</a>
+			<a href="#where-to-find">Where to find</a>
+			<a href="/join-the-team">Join the team</a>
+			<a href="/contact-us">Contact us</a>
+		</nav>
+		<div class="credits">
+			<div class="credits-social">
+				<a href="#facebook" target="_blank" rel="noopener noreferrer">
+					<img src={FacebookOrange} alt="facebook" width="40" height="40" loading="lazy">
+				</a>
+				<a href="#instagram" target="_blank" rel="noopener noreferrer">
+					<img src={InstagramOrange} alt="instagram" width="40" height="40" loading="lazy">
+				</a>
+				<a href="linkedin" target="_blank" rel="noopener noreferrer">
+					<img src={LinkedinOrange} alt="linkedin" width="40" height="40" loading="lazy">
+				</a>
+			</div>
+			<p>&copy; 2022 BlueChip. All Rights Reserved.</p>
+		</div>
+	</div>
+</footer>
+<style lang="sass">
+	footer
+		position: relative
+		display: block
+		width: 100%
+		float: left
+		height: 188px
+		background: var(--primary-pure)
+		.container
+			width: calc(100% - 40px)
+			max-width: 1440px
+			margin: 0 auto
+			height: 100%
+			align-items: center
+			display: flex
+			justify-content: space-between
+			color: var(--high-pure)
+	.footer-navigation
+		display: flex
+		align-items: center
+		grid-gap: 30px
+		a
+			text-decoration: none
+			color: var(--high-pure)
+	.credits-social
+		width: 150px
+		display: flex
+		justify-content: space-between
+		align-items: center
+		grid-gap: 5px
+		a
+			text-decoration: none
+	.credits
+		display: flex
+		justify-content: flex-end
+		flex-wrap: wrap
+		width: 360px
+		align-items: center
+		align-content: center
+		p
+			margin: 0 0 45px
+			font-size: 12px
+	@media all and (max-width: 1200px)
+		.footer-navigation
+			grid-gap: 15px
+			position: absolute
+			left: 45%
+			transform: translateX(-50%)
+			a
+				font-size: 13px
+	@media all and (max-width: 1000px)
+		.footer-navigation
+			left: auto
+			position: relative
+			transform: none
+			margin: 0 auto 20px
+			justify-content: center
+		footer
+			height: auto
+			padding: 20px 0
+			.container
+				display: block
+			.footer-logo
+				display: block
+				margin: 0 auto 20px
+		.credits
+			width: 100%
+			text-align: center
+			margin: 0 auto
+			justify-content: center
+			p
+				margin: 0
+	@media all and (max-width: 520px)
+		.footer-navigation
+			display: block
+			a
+				display: block
+				width: 100%
+				text-align: center
+				margin: 20px 0
+</style>

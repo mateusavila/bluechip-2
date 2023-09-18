@@ -1,0 +1,28 @@
+{
+	"private": true,
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/vercel": "^2.3.6",
+		"@astrojs/vue": "^1.2.2",
+		"@mailchimp/mailchimp_marketing": "^3.0.80",
+		"@prismicio/client": "^6.7.1",
+		"@prismicio/helpers": "^2.3.6",
+		"@sendgrid/mail": "^7.7.0",
+		"@vueuse/core": "^9.6.0",
+		"astro": "^1.6.15",
+		"vee-validate": "^4.7.3",
+		"vercel": "^28.8.0",
+		"vue": "^3.2.45",
+		"yup": "^0.32.11"
+	},
+	"devDependencies": {
+		"@types/mailchimp__mailchimp_marketing": "^3.0.6",
+		"sass": "^1.56.2"
+	}
+}

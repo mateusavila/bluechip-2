@@ -1,0 +1,25 @@
+---
+import { loadContent } from '../lib/index'
+import Layout from '../layouts/Layout.astro';
+import Intro from '../components/Intro.vue';
+import WhoWeAre from '../components/WhoWeAre.vue';
+import Brands from '../components/Brands.vue';
+import MeetTheTeamBlock from '../components/MeetTheTeamBlock.vue';
+import BeforeFooter from '../components/BeforeFooter.astro';
+import WhereToFind from '../components/WhereToFind.vue';
+
+const { data: { clients, who_we_are_text, brands, meet_the_team_title, meet_the_team_text, where_to_find } } = await loadContent('homepage')
+---
+
+<Layout title="BlueChip">
+	<Intro clients={clients} client:load />
+  <WhoWeAre text={who_we_are_text} client:idle />
+  <Brands brands={brands} client:idle />
+  <MeetTheTeamBlock text={meet_the_team_text} title={meet_the_team_title} client:idle />
+  <WhereToFind list={where_to_find} client:idle />
+  <BeforeFooter client:idle />
+</Layout>
+
+<style lang="sass">
+
+</style>

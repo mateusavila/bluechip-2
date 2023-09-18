@@ -1,0 +1,58 @@
+---
+import { Badge5000 } from './images'
+import * as prismicH from "@prismicio/helpers"
+const { text } = Astro.props
+const finalText = prismicH.asHTML(text)
+---
+
+<section class="join-the-team-text">
+  <div class="container">
+    <img src={Badge5000} alt="Inc 5000 - Fastest Growing Private Retail Companies" width="240" height="216" loading="lazy">
+    <div class="join-the-team-text-block">
+      <Fragment  set:html={finalText} />
+    </div>
+  </div>
+</section>
+
+<style lang="sass">
+  .join-the-team-text
+    padding: 90px 0
+    .container
+      max-width: 1260px
+      width: calc(100% - 40px)
+      margin: 0 auto
+      display: flex
+      justify-content: space-between
+      align-items: flex-start
+  .join-the-team-text-block
+    width: calc(100% - 290px)
+    p, :global(p)
+      margin: 0 0 30px
+      font-size: 20px
+      color: var(--primary-pure)
+      line-height: 200%
+  @media all and (max-width: 1024px)
+    .join-the-team-text-block
+      p, :global(p)
+        font-size: 16px
+  @media all and (max-width: 800px)
+    .join-the-team-text
+      img
+        max-width: 170px
+        height: auto
+        display: block
+    .join-the-team-text-block
+      width: calc(100% - 200px)
+  @media all and (max-width: 720px)
+    .join-the-team-text
+      .container
+        flex-wrap: wrap
+    .join-the-team-text-block
+      width: 100%
+      margin-top: 20px
+  @media all and (max-width: 600px)
+    .join-the-team-text
+      padding: 30px 0
+      img
+        max-width: 140px
+</style>

@@ -1,0 +1,215 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const { url } = Astro
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/fonts/stylesheet.css">
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header url={url} />
+    <slot />
+    <Footer url={url} />
+  </body>
+</html>
+<style is:global lang="sass">
+  :root
+    --fira: 'Fira Mono', sans-serif
+    --humane: 'Humane', sans-serif
+    --helper-pure: #61C943
+    --warning-pure: #EE7B36
+    --highlight-pure: #FDF151
+    --secondary-pure: #962CF1
+    --primary-pure: #02103E
+    --primary-light: #2344B0
+    --primary-medium: #001763
+    --secondary-dark: #6000B2
+    --secondary-medium: #B259FF
+    --secondary-light: #C480FF
+    --highlight-dark: #DBCC00
+    --highlight-medium: #F5E400
+    --highlight-light: #FFF9AB
+    --warning-light: #FF9352
+    --warning-medium: #FA6207
+    --warning-dark: #D14E00
+    --helper-dark: #32A112
+    --helper-medium: #34E900
+    --helper-light: #A5E991
+    --low-pure: #000000
+    --low-light: #A3A3A3
+    --low-medium: #666666
+    --low-dark: #292929
+    --high-pure: #ffffff
+    --high-light: #F5F5F5
+    --high-medium: #E0E0E0
+    --high-dark: #CCCCCC
+  @keyframes revealAllX
+    0%
+      opacity: 0
+      visibility: hidden
+      transform: translateX(50px)
+    100%
+      opacity: 1
+      visibility: visible
+      transform: translateX(0)
+  @keyframes revealOpacity
+    0%
+      opacity: 0
+      visibility: hidden
+    100%
+      opacity: 1
+      visibility: visible
+  @keyframes revealAllXNegative
+    0%
+      opacity: 0
+      visibility: hidden
+      transform: translateX(-50px)
+    100%
+      opacity: 1
+      visibility: visible
+      transform: translateX(0)
+  @keyframes revealAllY
+    0%
+      opacity: 0
+      visibility: hidden
+      transform: translateY(50px)
+    100%
+      opacity: 1
+      visibility: visible
+      transform: translateY(0)
+  *, *:before, *:after
+    box-sizing: border-box
+  html, body
+    background: var(--high-pure)
+    margin: 0
+    padding: 0
+    font-family: var(--fira)
+    scroll-behavior: smooth
+  .reveal-y, .reveal-x, .reveal-x-negative
+    position: relative
+    opacity: 0
+    transition: all .5s ease-in-out
+    visibility: hidden
+    &.active
+      visibility: visible
+      opacity: 1
+      transition: all .5s ease-in-out
+  .reveal-opacity
+    opacity: 0
+    &.active
+      opacity: 1
+  .reveal-y
+    transform: translateY(80px)
+    &.active
+      transform: translateY(0)
+  .reveal-x
+    transform: translateX(50px)
+    &.active
+      transform: translateX(0)
+  .reveal-x-nevative
+    transform: translateX(-50px)
+    &.active
+      transform: translateX(0)
+  
+  .button
+    background: var(--primary-light)
+    height: 51px
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    padding: 0 20px
+    border-radius: 40px
+    text-transform: uppercase
+    border: none
+    color: var(--high-pure)
+    font-size: 16px
+    text-decoration: none
+    font-family: var(--fira)
+    transition: all .2s ease-in-out
+    &.button-white
+      background: var(--high-medium)
+      color: var(--primary-light)
+      &:hover
+        background: var(--high-dark)
+    &:hover
+      transition: all .2s ease-in-out
+      background: var(--primary-medium)
+  .field-error
+    margin: 5px 0 0
+    font-size: 12px
+    color: var(--warning-dark)
+  .fields
+    margin-bottom: 30px
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+  .field
+    width: 100%
+    &.half
+      width: calc(50% - 30px)
+    label
+      width: 100%
+      margin-bottom: 10px
+      display: block
+      color: var(--primary-dark)
+    textarea
+      resize: none
+      padding: 10px 20px
+      height: 200px
+    input
+      height: 54px
+      padding: 0 20px
+    input, textarea
+      border-radius: 16px
+      background: var(--high-pure)
+      border: 2px solid var(--warning-pure)
+      font-family: var(--fira)
+      font-size: 16px
+      width: 100%
+      transition: all .2s ease-in-out
+      &.error
+        border-color: var(--warning-dark)
+        color: var(--high-pure)
+        transition: all .2s ease-in-out
+  .buttons
+    width: 100%
+    display: flex
+    justify-content: space-between
+  @media all and (max-width: 600px)
+    .fields
+      .field.half
+        width: 100%
+        &:nth-child(1)
+          margin-bottom: 30px
+  @media all and (max-width: 500px)
+    .field 
+      label
+        font-size: 14px
+    .buttons
+      flex-wrap: wrap
+      grid-gap: 10px
+      p
+        font-size: 14px
+        order: 2
+      .button
+        width: 100%
+        &.first
+          order: 1
+</style>

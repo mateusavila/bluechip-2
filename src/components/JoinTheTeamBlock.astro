@@ -1,0 +1,262 @@
+---
+import { JoinTheTeam1, JoinTheTeam2, JoinTheTeamEye, JoinTheTeamStar, JoinTheTeamStarWhite, JoinTheTeamYellow } from './images'
+
+---
+
+<div class="join-the-team">
+	<div class="container">
+		<h2>JOIN <br>THE TEAM</h2>
+		<div class="join-the-team-images">
+			<img src={JoinTheTeamYellow} alt="" width="536" height="818" loading="lazy" class="join-the-team-yellow">
+			<div class="join-the-team-images-list">
+				<div class="join-the-team-item green"></div>
+				<div class="join-the-team-item">
+					<img src={JoinTheTeam1} alt="" width="246" height="246" loading="lazy">
+				</div>
+				<div class="join-the-team-item center-image">
+					<img src={JoinTheTeamStar} alt="" width="144" height="144" loading="lazy">
+				</div>
+				<div class="join-the-team-item empty"></div>
+				<div class="join-the-team-item center-image">
+					<img src={JoinTheTeamStarWhite} alt="" width="194" height="194" loading="lazy" class="join-the-team-item-star">
+				</div>
+				<div class="join-the-team-item">
+					<img src={JoinTheTeamEye} alt="" width="246" height="246" loading="lazy">
+				</div>
+				<div class="join-the-team-item empty"></div>
+				<div class="join-the-team-item empty"></div>
+				<div class="join-the-team-item">
+					<img src={JoinTheTeam2} alt="" width="246" height="246" loading="lazy">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style lang="sass">
+	.join-the-team
+		background: var(--high-light)
+		height: 1080px
+		&:before, &:after
+			content: ''
+			background: var(--high-pure)
+			height: 246px
+			position: absolute
+			animation: .6s 1 alternate revealOpacity .2s forwards
+		&:before
+			width: calc((100% - 1250px) / 2)
+			left: 0
+			top: 215px
+		&:after
+			width: calc((100% - 1250px) / 2)
+			right: 0
+			bottom: -98px
+		.container
+			margin: 0 auto
+			max-width: 1250px
+			height: 100%
+			display: flex
+			align-items: center
+			position: relative
+			justify-content: flex-end
+			width: calc(100% - 40px)
+		h2
+			position: absolute
+			left: 0
+			z-index: 5
+			color: var(--primary-pure)
+			font-size: 400px
+			line-height: 300px
+			text-transform: uppercase
+			margin: 0
+			font-family: var(--humane)
+			opacity: 0
+			animation: .6s 1 alternate revealAllXNegative .2s forwards
+	.join-the-team-yellow
+		position: absolute
+		z-index: 2
+		animation: .6s 1 alternate revealAllXNegative .2s forwards
+	.join-the-team-images
+		width: 800px
+		height: 811px
+		position: relative
+		z-index: 3
+		&:before, &:after
+			content: ''
+			background: var(--high-pure)
+			height: 246px
+			position: absolute
+			z-index: 1
+			animation: .6s 1 alternate revealOpacity .2s forwards
+		&:before
+			border-top-right-radius: 246px
+			border-bottom-right-radius: 246px
+			width: 650px
+			left: -450px
+			top: 0
+		&:after
+			border-top-left-radius: 246px
+			border-bottom-left-radius: 246px
+			width: 800px
+			right: 0
+			bottom: -7px
+	.join-the-team-images-list
+		display: grid
+		justify-content: space-between
+		grid-gap: 40px
+		position: relative
+		z-index: 4
+		grid-template-columns: repeat(3, 246px)
+		.join-the-team-item
+			width: 246px
+			height: 246px
+			opacity: 0
+			&:nth-child(1)
+				animation: .6s 1 alternate revealOpacity .2s forwards
+			&:nth-child(2)
+				animation: .6s 1 alternate revealOpacity .4s forwards
+			&:nth-child(3)
+				animation: .6s 1 alternate revealOpacity .6s forwards
+			&:nth-child(5)
+				animation: .6s 1 alternate revealOpacity .8s forwards
+			&:nth-child(6)
+				animation: .6s 1 alternate revealOpacity 1s forwards
+			&:nth-child(9)
+				animation: .6s 1 alternate revealOpacity 1.2s forwards
+			&.center-image
+				display: flex
+				justify-content: center
+				align-items: center
+			&.green
+				background: var(--helper-pure)
+				border-radius: 100%
+			img
+				width: 100%
+				height: auto
+				display: block
+	@media all and (max-width: 1400px)
+		.join-the-team
+			&:before
+				height: 200px
+				top: 300px
+				width: 400px
+			&:after
+				height: 200px
+				width: 300px
+				bottom: -5px
+			h2
+				font-size: 300px
+				line-height: 220px
+		.join-the-team-images-list
+			grid-template-columns: repeat(3, 200px)
+			grid-gap: 20px
+			.join-the-team-item
+				width: 200px
+				height: 200px
+				.join-the-team-item-star
+					width: 150px
+					height: auto
+		.join-the-team-yellow
+			height: auto
+			display: block
+			width: 420px
+		.join-the-team-images
+			width: 680px
+			height: auto
+			&:after
+				height: 200px
+				width: 100%
+				bottom: 0
+			&:before
+				height: 200px
+	@media all and (max-width: 1000px)
+		.join-the-team
+			height: 800px
+			overflow: hidden
+			&:before, &:after
+				display: none
+			h2
+				font-size: 200px
+				line-height: 150px
+		.join-the-team-images
+			width: 480px
+			height: auto
+			&:after, &:before
+				height: 150px
+			&:before
+				margin-left: -40px
+				width: 645px
+			&:after
+				bottom: 0
+				margin-right: -30px
+		.join-the-team-images-list
+			grid-template-columns: repeat(3, 150px)
+			grid-gap: 20px
+			.join-the-team-item
+				width: 150px
+				height: 150px
+				.join-the-team-item-star
+					width: 100px
+					height: auto
+		.join-the-team-yellow
+			width: 324px
+	@media all and (max-width: 720px)
+		.join-the-team-images
+			width: 300px
+			height: auto
+			&:after, &:before
+				height: 90px
+			&:before
+				margin-left: -40px
+				width: 645px
+			&:after
+				bottom: 0
+				margin-right: -30px
+		.join-the-team-images-list
+			grid-template-columns: repeat(3, 90px)
+			grid-gap: 20px
+			.join-the-team-item
+				width: 90px
+				height: 90px
+				.join-the-team-item-star
+					width: 70px
+					height: auto
+		.join-the-team-yellow
+			width: 205px
+		.join-the-team
+			height: auto
+			padding: 60px 0
+			h2
+				font-size: 150px
+				line-height: 120px
+	@media all and (max-width: 475px)
+		.join-the-team-images
+			width: 200px
+			height: auto
+			&:after, &:before
+				height: 60px
+				border-bottom-left-radius: 0
+			&:before
+				margin-left: -40px
+				width: 645px
+			&:after
+				bottom: 0
+				margin-right: -30px
+		.join-the-team-images-list
+			grid-template-columns: repeat(3, 60px)
+			grid-gap: 10px
+			.join-the-team-item
+				width: 60px
+				height: 60px
+				.join-the-team-item-star
+					width: 30px
+					height: auto
+		.join-the-team-yellow
+			width: 131px
+		.join-the-team
+			height: auto
+			padding: 60px 0
+			h2
+				font-size: 100px
+				line-height: 80px
+</style>

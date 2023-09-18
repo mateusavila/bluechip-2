@@ -1,0 +1,222 @@
+--- 
+import { ContactPeople, ContactStar, ContactStar2 } from './images'
+import * as prismicH from "@prismicio/helpers"
+const { text, title } = Astro.props
+const finalText = prismicH.asHTML(text)
+---
+
+<div class="contact-us">
+	<div class="container">
+		<div class="contact-us-text">
+			<h2>Contact Us</h2>
+			<Fragment set:html={finalText} />
+		</div>
+		<div class="contact-us-images">
+			<img src={ContactStar} alt="" width="139" height="139" loading="lazy" class="contact-us-star-1">
+			<img src={ContactPeople} alt="" width="396" height="396" loading="lazy" class="contact-us-people">
+			<img src={ContactStar2} alt="" width="139" height="139" loading="lazy" class="contact-us-star-2">
+		</div>
+	</div>
+</div>
+
+<style lang="sass">
+	.contact-us
+		position: relative
+		background: var(--high-light)
+		height: 1080px
+		&:before, &:after
+			content: ''
+			position: absolute
+			z-index: 1
+			opacity: 0
+			animation: .6s 1 alternate revealOpacity .2s forwards
+		&:before
+			height: 204px
+			width: calc((100% - 1320px) / 2)
+			background: var(--helper-light)
+			left: 0
+			top: 460px
+		&:after
+			background: var(--high-pure)
+			height: 396px
+			width: calc((100% - 1320px) / 2)
+			right: 0
+			top: 240px
+		.container
+			position: relative
+			margin: 0 auto
+			max-width: 1320px
+			height: 100%
+			padding-top: 240px
+			align-items: flex-start
+			width: calc(100% - 40px)
+			display: flex
+			justify-content: flex-end
+			&:before, &:after
+				content: ''
+				position: absolute
+				opacity: 0
+				z-index: 1
+				animation: .6s 1 alternate revealOpacity .2s forwards
+			&:before
+				height: 204px
+				width: 500px
+				background: var(--helper-light)
+				border-top-right-radius: 204px
+				border-bottom-right-radius: 204px
+				left: 0
+				top: 460px
+			&:after
+				background: var(--high-pure)
+				height: 396px
+				width: 400px
+				right: 0
+				border-top-left-radius: 396px
+				border-bottom-left-radius: 396px
+		h2
+			text-transform: uppercase
+			color: var(--primary-pure)
+			margin: 0
+			font-size: 400px
+			white-space: nowrap
+			line-height: 328px
+			font-family: var(--humane)
+			opacity: 0
+			animation: .8s 1 alternate revealAllY .6s forwards
+		.contact-us-text
+			left: 0
+			z-index: 2
+			width: calc(100% - 450px)
+			position: absolute
+			p, :global(p)
+				color: var(--primary-pure)
+				font-size: 20px
+				line-height: 200%
+				margin: -40px 0 0
+				opacity: 0
+				animation: .8s 1 alternate revealAllY .8s forwards
+		.contact-us-images
+			width: 400px
+			height: 400px
+			z-index: 2
+			position: relative
+		.contact-us-people
+			opacity: 0
+			animation: .8s 1 alternate revealAllY .9s forwards
+		.contact-us-star-1, .contact-us-star-2
+			position: absolute
+			opacity: 0
+			z-index: 2
+		.contact-us-star-1
+			top: -68px
+			left: -40px
+			animation: .8s 1 alternate revealAllY .8s forwards
+		.contact-us-star-2
+			bottom: -68px
+			right: -40px
+			animation: .8s 1 alternate revealAllY 1s forwards
+	@media all and (max-width: 1450px)
+		.contact-us
+			overflow: hidden
+			height: 800px
+			&:after, &:before
+				display: none
+			.container
+				padding-top: 120px
+				&:before
+					left: -40px
+				&:after
+					right: -40px
+			h2
+				font-size: 300px
+				line-height: 83%
+				margin-bottom: 30px
+			.contact-us-text
+				width: calc(100% - 450px)
+			.contact-us-images
+				position: absolute
+				right: 40px
+	@media all and (max-width: 1160px)
+		.contact-us
+			.contact-us-text
+				width: calc(100% - 330px)
+			.contact-us-images
+				width: 300px
+				height: 300px
+				right: 0
+			.contact-us-star-1, .contact-us-star-2
+				width: 80px
+				height: auto
+			.contact-us-star-1
+				top: -30px
+				left: -30px
+			.contact-us-star-2
+				bottom: -30px
+				right: 10px
+			.container
+				&:before
+					height: 150px
+					top: 430px
+				&:after
+					width: 310px
+					height: 300px
+			h2
+				font-size: 250px
+			.contact-us-people
+				width: 100%
+				height: auto
+				display: block
+	@media all and (max-width: 1024px)
+		.contact-us
+			h2
+				font-size: 200px
+			.contact-us-text
+				p, :global(p)
+					font-size: 16px
+	@media all and (max-width: 800px)
+		.contact-us
+			height: 700px
+			.contact-us-text
+				width: calc(100% - 280px)
+			.container
+				&:after
+					width: 250px
+					height: 250px
+			h2
+				font-size: 150px
+			.contact-us-images
+				width: 250px
+				height: 250px
+			.contact-us-star-2
+				bottom: -60px
+				right: 0
+	@media all and (max-width: 630px)
+		.contact-us
+			height: auto
+			.container
+				padding: 80px 0
+				flex-wrap: wrap
+				&:before
+					top: 150px
+				&:after
+					top: auto
+					bottom: 80px
+					width: calc(50% + 130px)
+			.contact-us-text
+				width: 100%
+				position: relative
+			.contact-us-images
+				margin: 50px auto 0
+				display: block
+				position: relative
+				right: auto
+	@media all and (max-width: 420px)
+		.contact-us
+			h2
+				font-size: 100px
+				margin-bottom: 50px
+			.container
+				&:before
+					top: 120px
+					width: 95%
+</style>

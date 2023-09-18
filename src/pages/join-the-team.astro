@@ -1,0 +1,15 @@
+---
+import { loadContent } from '../lib/index'
+import JoinTeam from '../components/JoinTeam.vue';
+import JoinTheTeamBlock from '../components/JoinTheTeamBlock.astro';
+import JoinTheTeamText from '../components/JoinTheTeamText.astro';
+import Layout from '../layouts/Layout.astro';
+
+const { data: { text } } = await loadContent('join_the_team')
+---
+
+<Layout title="BlueChip">
+	<JoinTheTeamBlock />
+  <JoinTheTeamText text={text} />
+  <JoinTeam client:load />
+</Layout>

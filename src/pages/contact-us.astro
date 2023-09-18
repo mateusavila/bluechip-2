@@ -1,0 +1,16 @@
+---
+import { loadContent } from '../lib/index'
+import ContactUsTitle from '../components/ContactUsTitle.astro'
+import Layout from '../layouts/Layout.astro'
+import ContactForm from '../components/ContactForm.vue'
+const { data: { text } } = await loadContent('contact_us')
+---
+
+<Layout title="BlueChip">
+	<ContactUsTitle text={text} />
+  <ContactForm client:load />
+</Layout>
+
+<style lang="sass">
+
+</style>
